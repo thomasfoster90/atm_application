@@ -1,43 +1,52 @@
-//Begin with the document ready function
+$(document).ready(function() {
 
-    //Checking account deposit function
+  // Call this function to initialize either the checking or savings bank accounts, with different selectors
+  function initBankAccount(depositButtonSelector, withdrawButtonSelector, amountSelector, balanceSelector) {
+    var amountField = $(amountSelector);
+    var balanceElement = $(balanceSelector);
 
-      //On click of the depositChecking button
+    // When the checking deposit button is clicked
+    $(depositButtonSelector).click(function(event) {
+      // Get the deposit amount
+      var depositAmount = parseInt(amountField.val(), 10);
+      // Get the current balance
+      var currentBalance = parseInt(getBalanceStr(balanceElement), 10);
+      // Add the two together to get a new balance
+      var newBalance = depositAmount + currentBalance;
+      // Put the new balance on the page
+      placeBalance(balanceElement, newBalance);
+    });
 
-        //Get value from the amountChecking input field
+    // When the withdrawal deposit button is clicked
+    $(withdrawButtonSelector).click(function(event) {
+      // Get the withdrawal amount
+      var withdrawalAmount = parseInt(amountField.val(), 10);
+      // Get the current balance
+      var currentBalance = parseInt(getBalanceStr(balanceElement), 10);
+      // Subtract the withdrawal amount from the currentBalance
+      var newBalance = currentBalance - withdrawalAmount;
 
-        //Take that value and add it to the existing value in the checkingBalance div
+      if (withdrawalAmount <= currentBalance) {
+        // Put the new balance on the page
+        placeBalance(balanceElement, newBalance);
+      }
+      else {
+        alert("You don't have that much money!");
+      }
+    });
+  }
 
-    //Checking account withdrawl funtion
+  // Gets the contents of the 'balance' element and removes the $ from the front
+  function getBalanceStr(balanceElement) {
+    return balanceElement.text().replace('$', '');
+  }
 
-      //On click of the withdrawChecking button
+  // Puts the balance back on the page with a $ in front
+  function placeBalance(balanceElement, newBalance) {
+    return balanceElement.text("$" + newBalance);
+  }
 
-        //Get value from the amountChecking input field
+  initBankAccount('#depositChecking', '#withdrawChecking', '#amountChecking', '#checkingBalance');
+  initBankAccount('#depositSavings', '#withdrawSavings', '#amountSavings', '#savingsBalance');
 
-        // If that value is greater than the value in the account ignore that action
-        // In other words if this would put the account into a negative balance do not allow it
-
-        //Else subtract that value from the current amount in the checking account
-
-    //Savings account deposit function
-
-      //On click of the depositSavings button
-
-        //Get value from the amountSavings input field
-
-        //Take that value and add it to the existing value in the savingsBalance div
-
-    //Savings account withdraw funtion
-
-      //On click of the withdrawl button
-
-        //Get value from the amountSavings input field
-
-         //If that value is greater than the value in the account ignore that action
-         //In other words if this would put the account into a negative balance do not allow it
-
-         //Else subtract that value from the current amount in the savings account
-
-// Bonus-- get the two accounts to work with each other and allow for overdraft protection
-
-// Double Bonus-- This isnt very DRY.  Using the keyword "this" see if you can make the withdraw and deposit functions work for both accounts
+});
