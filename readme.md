@@ -27,3 +27,7 @@ We're going to build an application to keep track of the checking and savings ba
 * [Adding or removing a CSS class using jQuery](https://api.jquery.com/category/css/)
 * [Adding HTML with jQuery](http://api.jquery.com/category/manipulation/dom-insertion-inside/)
 * [Removing HTML with jQuery](https://api.jquery.com/category/manipulation/dom-removal/)
+
+## Licensing
+All content is licensed under a CC­BY­NC­SA 4.0 license.
+All software code is licensed under GNU GPLv3. For commercial use or alternative licensing, please contact legal@ga.co.
