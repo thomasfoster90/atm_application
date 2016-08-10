@@ -5,7 +5,7 @@ We're going to build an application to keep track of the checking and savings ba
 - As a user, I want to deposit money into one of the bank accounts
 - As a user, I want to withdraw money from one of the bank accounts
   - Make sure the balance in an account can't go negative. If a user tries to withdraw more money than exists in the account, ignore the transaction. (if...else)
-- As a user, I want the color of my back account to reflect it's balance (there's a CSS class called .zero already written for this!)
+- As a user, I want the color of my bank account to reflect it's balance (there's a CSS class called .zero already written for this!)
 - Are there ways to refactor your code to make it DRYer or more Object-Oriented?
 
 ## Commits to Make (Suggested)
